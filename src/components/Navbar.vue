@@ -28,6 +28,11 @@
               <i class="fas fa-flag-checkered me-1"></i>Courses
             </RouterLink>
           </li>
+          <li class="nav-item">
+            <RouterLink to="/register" class="nav-link">
+              <i class="fas fa-flag-checkered me-1"></i>Register
+            </RouterLink>
+          </li>
         </ul>
       </div>
     </div>
