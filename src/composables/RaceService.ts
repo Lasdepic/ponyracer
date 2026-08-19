@@ -16,7 +16,6 @@ export function useRaceService() {
         return res.data
       } catch (error) {
         console.error('Erreur lors de la récupération des courses :', error)
-
         throw error
       }
     },
