@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand">PonyRacer</a>
+      <RouterLink to="/" class="navbar-brand">PonyRacer</RouterLink>
 
       <button type="button" class="navbar-toggler" @click="toggleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
       <div id="navbar" :class="{ collapse: navbarCollapsed }">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link">Races</a>
+            <RouterLink to="/races" class="nav-link">Races</RouterLink>
           </li>
         </ul>
       </div>
