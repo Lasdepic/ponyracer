@@ -1,29 +1,14 @@
-<script lang="ts">
-import { computed, defineComponent, type PropType } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import type { RaceModel } from '../models/RaceModel'
 import fromNow from '../utils/fromNow'
 import Pony from './Pony.vue'
 
-export default defineComponent({
-  components: {
-    Pony,
-  },
+const props = defineProps<{
+  raceModel: RaceModel
+}>()
 
-  props: {
-    raceModel: {
-      type: Object as PropType<RaceModel>,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const startInstant = computed(() => fromNow(props.raceModel.startInstant))
-
-    return {
-      startInstant,
-    }
-  },
-})
+const startInstant = computed(() => fromNow(props.raceModel.startInstant))
 </script>
 
 <template>
