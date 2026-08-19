@@ -9,7 +9,11 @@ const races = ref<Array<RaceModel>>([])
 const raceService = useRaceService()
 
 onMounted(async () => {
-  races.value = await raceService.list()
+  try {
+    races.value = await raceService.list()
+  } catch {
+    error.value = true
+  }
 })
 </script>
 
@@ -18,6 +22,11 @@ onMounted(async () => {
     <h1 class="mb-4 border border-dark text-center text-warning bg-dark rounded">
       Course de Poney
     </h1>
+
+    <div v-if="error" class="alert alert-danger" role="alert">
+      An error occurred while loading.
+      <button type="button" class="btn-close" aria-label="Close" @click="error = false"></button>
+    </div>
 
     <Race v-for="race in races" :key="race.id" :raceModel="race" />
   </div>
