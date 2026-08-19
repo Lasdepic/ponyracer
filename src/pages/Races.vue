@@ -23,10 +23,9 @@ onMounted(async () => {
       Course de Poney
     </h1>
 
-    <div v-if="error" class="alert alert-danger" role="alert">
+    <Alert v-if="error" variant="danger" dismissible @dismissed="error = false">
       An error occurred while loading.
-      <button type="button" class="btn-close" aria-label="Close" @click="error = false"></button>
-    </div>
+    </Alert>
 
     <Race v-for="race in races" :key="race.id" :raceModel="race" />
   </div>
