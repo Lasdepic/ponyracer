@@ -1,16 +1,32 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <div class="container-fluid">
-      <RouterLink to="/" class="navbar-brand">PonyRacer</RouterLink>
+  <nav class="navbar navbar-expand-md navbar-dark pr-navbar fixed-top">
+    <div class="container">
+      <RouterLink to="/" class="navbar-brand">
+        <i class="fas fa-horse me-2"></i>PonyRacer
+      </RouterLink>
 
-      <button type="button" class="navbar-toggler" @click="toggleNavbar">
+      <button
+        type="button"
+        class="navbar-toggler"
+        aria-controls="navbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        @click="toggleNavbar"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div id="navbar" :class="{ collapse: navbarCollapsed }">
-        <ul class="navbar-nav me-auto">
+      <div id="navbar" :class="{ collapse: navbarCollapsed }" class="navbar-collapse">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <RouterLink to="/races" class="nav-link">Races</RouterLink>
+            <RouterLink to="/" class="nav-link">
+              <i class="fas fa-home me-1"></i>Accueil
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink to="/races" class="nav-link">
+              <i class="fas fa-flag-checkered me-1"></i>Courses
+            </RouterLink>
           </li>
         </ul>
       </div>

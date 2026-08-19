@@ -1,6 +1,6 @@
 <template>
-  <figure @click="clicked">
-    <img class="border border-warning rounded mb-2 p-2" :src="ponyImageUrl" :alt="pony.name" />
+  <figure class="pr-pony-item" @click="clicked">
+    <img :src="ponyImageUrl" :alt="pony.name" />
     <figcaption>{{ pony.name }}</figcaption>
   </figure>
 </template>

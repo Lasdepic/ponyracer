@@ -9,10 +9,12 @@ const races: Array<RaceModel> = await raceService.list()
 </script>
 
 <template>
-  <div>
-    <h1 class="mb-4 border border-dark text-center text-warning bg-dark rounded">
-      Course de Poney
-    </h1>
+  <div class="pr-races-container px-3 px-md-4 py-4">
+    <div class="pr-races-header">
+      <h1>
+        <i class="fas fa-flag-checkered me-2"></i>Courses de Poney
+      </h1>
+    </div>
 
     <Race v-for="race in races" :key="race.id" :raceModel="race" />
   </div>
