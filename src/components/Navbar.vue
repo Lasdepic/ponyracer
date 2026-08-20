@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { useUserService } from '../composables/UserService'
+import { useUserService, logout as logoutUser } from '../composables/UserService'
 
 export default {
   data() {
@@ -63,6 +63,11 @@ export default {
   methods: {
     toggleNavbar() {
       this.navbarCollapsed = !this.navbarCollapsed
+    },
+
+    logout() {
+      logoutUser()
+      this.$router.push({ name: 'home' })
     },
   },
 }
