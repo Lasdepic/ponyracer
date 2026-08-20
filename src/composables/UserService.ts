@@ -1,12 +1,16 @@
 import axios from 'axios'
+import { ref } from 'vue'
 import type { UserModel } from '../models/UserModel'
+
+const userModel = ref<UserModel | null>(null)
 
 export function useUserService() {
   return {
-    async register(userModel: UserModel): Promise<UserModel> {
+    userModel,
+    async register(user: UserModel): Promise<UserModel> {
       const res = await axios.post<UserModel>(
         'https://ponyracer.ninja-squad.com/api/users',
-        userModel,
+        user,
       )
       return res.data
     },
@@ -16,6 +20,7 @@ export function useUserService() {
         'https://ponyracer.ninja-squad.com/api/users/authentication',
         credentials,
       )
+      userModel.value = res.data
       return res.data
     },
   }

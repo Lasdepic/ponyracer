@@ -23,7 +23,7 @@
               <i class="fas fa-home me-1"></i>Accueil
             </RouterLink>
           </li>
-          <li class="nav-item">
+          <li v-if="userModel" class="nav-item">
             <RouterLink to="/races" class="nav-link">
               <i class="fas fa-flag-checkered me-1"></i>Courses
             </RouterLink>
@@ -34,16 +34,29 @@
             </RouterLink>
           </li>
         </ul>
+        <ul v-if="userModel" class="navbar-nav">
+          <li class="navbar-text">
+            <span id="current-user" class="me-2">
+              {{ userModel.login }}
+              <span class="fa fa-star"></span>
+              {{ userModel.money }}
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import { useUserService } from '../composables/UserService'
+
 export default {
   data() {
+    const { userModel } = useUserService()
     return {
       navbarCollapsed: true,
+      userModel,
     }
   },
 
