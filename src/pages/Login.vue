@@ -60,16 +60,16 @@ import { ErrorMessage, Field, Form } from 'vee-validate'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForms } from '../composables/Forms'
-import { useUserService } from '../composables/UserService'
+import { useUserStore } from '../composables/UserStore'
 
 useForms()
-const userService = useUserService()
+const userStore = useUserStore()
 const router = useRouter()
 const authenticationFailed = ref(false)
 async function authenticate(credentials: Record<string, unknown>) {
   authenticationFailed.value = false
   try {
-    await userService.authenticate(credentials as { login: string; password: string })
+    await userStore.authenticate(credentials as { login: string; password: string })
     router.push({ name: 'home' })
   } catch (e) {
     authenticationFailed.value = true

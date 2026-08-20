@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { useUserService } from '../composables/UserService'
+import { storeToRefs } from 'pinia'
+import { useUserStore } from '../composables/UserStore'
 
-const { userModel } = useUserService()
+const userStore = useUserStore()
+// storeToRefs() extrait les refs du store pour les destructurer sans
+// perdre la réactivité (sans lui, userModel serait déréférencé et figé).
+const { userModel } = storeToRefs(userStore)
 </script>
 
 <template>

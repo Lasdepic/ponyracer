@@ -23,11 +23,13 @@
     "axios": "1.18.1",
     "bootstrap": "5.3.8",
     "date-fns": "4.4.0",
+    "pinia": "3.0.4",
     "vee-validate": "4.15.1",
     "vue": "^3.5.38",
     "vue-router": "5.1.0"
   },
   "devDependencies": {
+    "@pinia/testing": "1.0.3",
     "@playwright/test": "^1.61.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/jsdom": "^28.0.3",

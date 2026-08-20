@@ -42,6 +42,11 @@
               {{ userModel.money }}
             </span>
           </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-link nav-link" @click="logout">
+              <i class="fas fa-sign-out-alt me-1"></i>Logout
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -49,14 +54,17 @@
 </template>
 
 <script>
-import { useUserService, logout as logoutUser } from '../composables/UserService'
+import { storeToRefs } from 'pinia'
+import { useUserStore } from '../composables/UserStore'
 
 export default {
   data() {
-    const { userModel } = useUserService()
+    const userStore = useUserStore()
     return {
       navbarCollapsed: true,
-      userModel,
+      // On « épand » les refs du store dans data() grâce à storeToRefs :
+      // ce.userModel reste ainsi réactif et synchronisé avec le store.
+      ...storeToRefs(userStore),
     }
   },
 
@@ -66,7 +74,8 @@ export default {
     },
 
     logout() {
-      logoutUser()
+      // useUserStore() retourne toujours la même instance de store.
+      useUserStore().logoutAndForget()
       this.$router.push({ name: 'home' })
     },
   },

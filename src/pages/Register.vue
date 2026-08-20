@@ -109,18 +109,18 @@ import { ErrorMessage, Field, Form } from 'vee-validate'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForms } from '../composables/Forms'
-import { useUserService } from '@/composables/UserService'
+import { useUserStore } from '@/composables/UserStore'
 import type { UserModel } from '../models/UserModel'
 
 useForms()
 
 const initialValues = { birthYear: new Date().getFullYear() - 18 }
-const userService = useUserService()
+const userStore = useUserStore()
 const router = useRouter()
 const registrationFailed = ref(false)
 async function register(userModel: Record<string, unknown>) {
   try {
-    await userService.register(userModel as unknown as UserModel)
+    await userStore.register(userModel as unknown as UserModel)
     router.push({ name: 'home' })
   } catch (e) {
     registrationFailed.value = true
