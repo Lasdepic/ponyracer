@@ -3,40 +3,52 @@
     <div class="col-md-6 offset-md-3">
       <h1>Log in</h1>
 
-      <Alert
-        v-if="authenticationFailed"
-        variant="danger"
-        dismissible
-        @dismissed="authenticationFailed = false"
-        >Nope, try again.</Alert
-      >
+      <!-- Animation du message d'erreur -->
+      <Transition name="fade" mode="out-in">
+        <Alert
+          v-if="authenticationFailed"
+          variant="danger"
+          dismissible
+          @dismissed="authenticationFailed = false"
+        >
+          Nope, try again.
+        </Alert>
+      </Transition>
 
       <Form @submit="authenticate($event)" v-slot="{ meta: formMeta }">
+        <!-- Login -->
         <Field name="login" rules="required" v-slot="{ field, meta }">
           <div class="mb-3">
             <label
               for="login"
               class="form-label"
               :class="{ 'text-danger': meta.dirty && !meta.valid }"
-              >Login</label
             >
+              Login
+            </label>
+
             <input
               id="login"
               class="form-control"
               :class="{ 'is-invalid': meta.dirty && !meta.valid }"
               v-bind="field"
             />
+
             <ErrorMessage name="login" class="invalid-feedback" />
           </div>
         </Field>
+
+        <!-- Password -->
         <Field name="password" rules="required" v-slot="{ field, meta }">
           <div class="mb-3">
             <label
               for="password"
               class="form-label"
               :class="{ 'text-danger': meta.dirty && !meta.valid }"
-              >Password</label
             >
+              Password
+            </label>
+
             <input
               id="password"
               type="password"
@@ -44,9 +56,12 @@
               :class="{ 'is-invalid': meta.dirty && !meta.valid }"
               v-bind="field"
             />
+
             <ErrorMessage name="password" class="invalid-feedback" />
           </div>
         </Field>
+
+        <!-- Submit -->
         <button class="btn btn-primary" type="submit" :disabled="!formMeta.valid">
           Log me in!
         </button>
@@ -63,16 +78,38 @@ import { useForms } from '../composables/Forms'
 import { useUserStore } from '../composables/UserStore'
 
 useForms()
+
 const userStore = useUserStore()
 const router = useRouter()
+
 const authenticationFailed = ref(false)
+
 async function authenticate(credentials: Record<string, unknown>) {
   authenticationFailed.value = false
+
   try {
-    await userStore.authenticate(credentials as { login: string; password: string })
+    await userStore.authenticate(
+      credentials as {
+        login: string
+        password: string
+      },
+    )
+
     router.push({ name: 'home' })
   } catch (e) {
     authenticationFailed.value = true
   }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
