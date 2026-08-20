@@ -12,18 +12,17 @@ const startInstant = computed(() => fromNow(props.raceModel.startInstant))
 </script>
 
 <template>
-  <div class="pr-card mb-4">
-    <div class="pr-card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <h2>{{ raceModel.name }}</h2>
-      <span class="pr-badge">
-        <i class="fas fa-clock"></i>
-        {{ startInstant }}
+  <div class="card mb-4 shadow-sm">
+    <div
+      class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2"
+    >
+      <h2 class="h5 mb-0">{{ raceModel.name }}</h2>
+      <span class="badge text-bg-light">
+        <i class="fas fa-clock me-1"></i>{{ startInstant }}
       </span>
     </div>
-    <div class="pr-pony-grid">
-      <li v-for="pony in raceModel.ponies" :key="pony.id" class="list-unstyled mb-0">
-        <Pony :pony="pony" />
-      </li>
+    <div class="card-body d-flex flex-wrap justify-content-center gap-2">
+      <Pony v-for="pony in raceModel.ponies" :key="pony.id" :pony="pony" />
     </div>
   </div>
 </template>

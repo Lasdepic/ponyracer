@@ -1,298 +1,32 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
-:root {
-  --pr-primary: #6c5ce7;
-  --pr-primary-dark: #5a4bd1;
-  --pr-secondary: #00cec9;
-  --pr-accent: #fdcb6e;
-  --pr-dark: #2d3436;
-  --pr-darker: #1e272e;
-  --pr-light: #dfe6e9;
-  --pr-bg: #f8f9fa;
-  --pr-card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --pr-card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
-  --pr-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--pr-bg);
-  color: var(--pr-dark);
-  min-height: 100vh;
+  background-color: #f8f9fa;
 }
 
-/* Navbar */
-.pr-navbar {
-  background: linear-gradient(135deg, var(--pr-dark) 0%, var(--pr-darker) 100%);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-  padding: 0.75rem 0;
-  transition: var(--pr-transition);
+/* Offset fixed navbar */
+.pr-main {
+  padding-top: 56px;
 }
 
-.pr-navbar .navbar-brand {
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: #fff !important;
-  letter-spacing: -0.5px;
-}
-
-.pr-navbar .nav-link {
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-weight: 500;
-  padding: 0.5rem 1rem !important;
-  border-radius: 8px;
-  transition: var(--pr-transition);
-}
-
-.pr-navbar .nav-link:hover,
-.pr-navbar .nav-link.router-link-active {
-  color: #fff !important;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.pr-navbar .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.3);
-  padding: 0.4rem 0.6rem;
-}
-
-.pr-navbar .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Hero Section */
-.pr-hero {
-  background: linear-gradient(135deg, var(--pr-primary) 0%, var(--pr-dark) 50%, var(--pr-secondary) 100%);
-  color: #fff;
-  padding: 6rem 1rem 4rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.pr-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml,%3csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cg fill='%23ffffff' fill-opacity='0.05'%3e%3cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e");
-  pointer-events: none;
-}
-
-.pr-hero h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.pr-hero .lead {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  opacity: 0.9;
-  font-weight: 300;
-}
-
-/* Buttons */
-.pr-btn-primary {
-  background: linear-gradient(135deg, var(--pr-primary) 0%, var(--pr-primary-dark) 100%);
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
-  transition: var(--pr-transition);
-}
-
-.pr-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
-  color: #fff;
-}
-
-.pr-btn-primary:active {
-  transform: translateY(0);
-}
-
-/* Cards */
-.pr-card {
-  background: #fff;
-  border: none;
-  border-radius: 16px;
-  box-shadow: var(--pr-card-shadow);
-  transition: var(--pr-transition);
-  overflow: hidden;
-}
-
-.pr-card:hover {
-  box-shadow: var(--pr-card-shadow-hover);
-  transform: translateY(-4px);
-}
-
-.pr-card-header {
-  background: linear-gradient(135deg, var(--pr-dark) 0%, var(--pr-darker) 100%);
-  color: #fff;
-  padding: 1.25rem 1.5rem;
-}
-
-.pr-card-header h2 {
-  font-weight: 700;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  margin: 0;
-}
-
-.pr-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 0.4rem 0.9rem;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #fff;
-}
-
-/* Pony Grid */
-.pr-pony-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 1rem;
-  padding: 1.5rem;
-}
-
-@media (min-width: 576px) {
-  .pr-pony-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .pr-pony-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  }
-}
-
-.pr-pony-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-  padding: 0.75rem;
-  border-radius: 12px;
-  transition: var(--pr-transition);
-}
-
-.pr-pony-item:hover {
-  background: var(--pr-bg);
-  transform: scale(1.05);
-}
-
-.pr-pony-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  padding: 0.5rem;
-  border: 2px solid var(--pr-accent);
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
-  transition: var(--pr-transition);
-}
-
-.pr-pony-item:hover img {
-  border-color: var(--pr-primary);
-  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-  transform: scale(1.1);
-}
-
-.pr-pony-item figcaption {
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-  color: var(--pr-dark);
-}
-
-/* Race Container */
-.pr-races-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.pr-races-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.pr-races-header h1 {
-  font-weight: 800;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  color: var(--pr-dark);
-  position: relative;
-  display: inline-block;
-}
-
-.pr-races-header h1::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--pr-primary), var(--pr-secondary));
-  border-radius: 2px;
-  margin: 0.75rem auto 0;
-}
-
-/* Page Content */
-.pr-page-content {
-  padding-top: 70px;
-}
-
-/* Loading */
+/* Loading state */
 .pr-loading {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 50vh;
-  color: var(--pr-primary);
-  font-weight: 500;
   gap: 0.75rem;
 }
 
-.pr-loading .spinner-border {
-  width: 2rem;
-  height: 2rem;
+/* Pony thumbnails */
+.pr-pony-item {
+  cursor: pointer;
+  text-align: center;
 }
 
-/* Alert refinements */
-.pr-alert {
-  border: none;
-  border-radius: 12px;
-  font-weight: 500;
-  box-shadow: var(--pr-card-shadow);
-}
-
-/* Main container padding for fixed navbar */
-.pr-main {
-  padding-top: 56px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 575.98px) {
-  .pr-hero {
-    padding: 5rem 1rem 3rem;
-  }
-
-  .pr-card-header {
-    padding: 1rem 1.25rem;
-  }
-
-  .pr-pony-item img {
-    width: 64px;
-    height: 64px;
-  }
+.pr-pony-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }

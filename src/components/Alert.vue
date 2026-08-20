@@ -1,5 +1,5 @@
 <template>
-  <div class="alert pr-alert" role="alert" :class="alertClasses">
+  <div class="alert" role="alert" :class="alertClasses">
     <slot></slot>
     <button
       type="button"

@@ -10,5 +10,13 @@ export function useUserService() {
       )
       return res.data
     },
+
+    async authenticate(credentials: { login: string; password: string }): Promise<UserModel> {
+      const res = await axios.post<UserModel>(
+        'https://ponyracer.ninja-squad.com/api/users/authentication',
+        credentials,
+      )
+      return res.data
+    },
   }
 }

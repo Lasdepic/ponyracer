@@ -1,7 +1,7 @@
 <template>
   <figure class="pr-pony-item" @click="clicked">
     <img :src="ponyImageUrl" :alt="pony.name" />
-    <figcaption>{{ pony.name }}</figcaption>
+    <figcaption class="mt-1">{{ pony.name }}</figcaption>
   </figure>
 </template>
 

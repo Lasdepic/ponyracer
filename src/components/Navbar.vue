@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-dark pr-navbar fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
       <RouterLink to="/" class="navbar-brand">
         <i class="fas fa-horse me-2"></i>PonyRacer
